@@ -1,0 +1,103 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>fdd6e8d3-5273-4a94-831e-e1bcc3f21a5e</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Quartos\**" />
+    <Content Remove="Views\Quartos\**" />
+    <EmbeddedResource Remove="Views\Quartos\**" />
+    <None Remove="Views\Quartos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\QuartosController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Hotels\Delete.cshtml" />
+    <Content Remove="Views\Hotels\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Uploads\03b088fc-8566-4635-bf2e-753171f96492_03_11_2021-16_06_58_56.png" />
+    <None Include="wwwroot\Uploads\0bae6988-18db-45f8-8226-48dfe75ebec2_03_11_2021-19_35_30_39.png" />
+    <None Include="wwwroot\Uploads\0d141371-8304-4c33-a679-6e034b32e12a_03_11_2021-16_56_21_62.png" />
+    <None Include="wwwroot\Uploads\0e556e0f-8444-4e1e-8c60-337d60b45c48_03_11_2021-16_55_23_06.png" />
+    <None Include="wwwroot\Uploads\24e23c3c-fa06-4858-bee5-56297b7f7949_03_11_2021-17_13_23_46.png" />
+    <None Include="wwwroot\Uploads\25346f8f-4658-4457-ae10-9db1a33113d1_03_11_2021-16_53_44_25.png" />
+    <None Include="wwwroot\Uploads\26337e05-6c51-40e9-b485-146c37e2d218_03_11_2021-16_58_06_47.png" />
+    <None Include="wwwroot\Uploads\316fb412-5136-4c0e-80d3-47107d6f89b2_03_11_2021-16_57_16_17.png" />
+    <None Include="wwwroot\Uploads\36da2f64-5921-4c30-aacd-6f2c5a6f4077_03_11_2021-16_57_37_60.png" />
+    <None Include="wwwroot\Uploads\3a3f9786-f1d1-4aae-8362-a198770198f3_03_11_2021-16_49_31_43.png" />
+    <None Include="wwwroot\Uploads\4e67a431-4d47-4c89-8a37-5f556a78087c_03_11_2021-17_00_37_24.png" />
+    <None Include="wwwroot\Uploads\4e912826-5ad8-44c5-a734-e39032f44cce_03_11_2021-17_01_50_14.png" />
+    <None Include="wwwroot\Uploads\528cd123-ea5b-477b-926c-f20005064b09_03_11_2021-16_53_05_23.png" />
+    <None Include="wwwroot\Uploads\60fc00f7-4d9c-40e6-91f2-2466a98e58cb_03_11_2021-19_55_21_09.png" />
+    <None Include="wwwroot\Uploads\62c215cb-8a3e-47a5-8616-6309b236c89d_03_11_2021-17_06_14_64.png" />
+    <None Include="wwwroot\Uploads\6600ec72-0b05-4105-919a-a9a1e939df6b_03_11_2021-16_58_41_64.png" />
+    <None Include="wwwroot\Uploads\6a2671dd-cdc6-461c-ad3a-73d773d71bfe_03_11_2021-19_31_51_12.png" />
+    <None Include="wwwroot\Uploads\6a54e84d-8fc0-41f3-b9a0-56449a38727c_03_11_2021-19_32_15_85.png" />
+    <None Include="wwwroot\Uploads\7b16203a-7ccb-48cc-84a7-909c56a6a026_03_11_2021-17_00_19_38.png" />
+    <None Include="wwwroot\Uploads\7d39890c-87b8-4d5d-b7fc-e6db5ccbfee3_03_11_2021-19_33_16_59.png" />
+    <None Include="wwwroot\Uploads\7fadd9d9-cbaa-4c57-9df0-1438579dfb3c_03_11_2021-17_01_21_15.png" />
+    <None Include="wwwroot\Uploads\81499617-4e6b-4743-b881-e26d953ba122_03_11_2021-19_24_55_14.png" />
+    <None Include="wwwroot\Uploads\850c495f-bf84-45e7-8ee0-aae59fe3bda4_03_11_2021-19_25_05_09.png" />
+    <None Include="wwwroot\Uploads\89c30932-652d-4928-a604-1a1e47a7152b_03_11_2021-16_58_52_09.png" />
+    <None Include="wwwroot\Uploads\89ed19fe-fd99-4c4f-be23-c15552719420_03_11_2021-17_06_44_65.png" />
+    <None Include="wwwroot\Uploads\96ec6a03-89c4-425f-9956-970c5b1b26e2_03_11_2021-16_43_14_63.png" />
+    <None Include="wwwroot\Uploads\a7de3287-d0b9-4d07-bb2d-787102faa38e_03_11_2021-17_00_08_14.png" />
+    <None Include="wwwroot\Uploads\badb4349-68e7-49b9-ba76-7fe975187c7d_03_11_2021-19_35_42_28.png" />
+    <None Include="wwwroot\Uploads\bf68d651-37da-4604-8db7-df53df3768fe_03_11_2021-16_55_57_30.png" />
+    <None Include="wwwroot\Uploads\c8376e97-8a9d-450e-ba43-07bbc52216bd_03_11_2021-17_02_31_26.png" />
+    <None Include="wwwroot\Uploads\c9f012d7-fdd5-4a58-90a8-658aca11bc0f_03_11_2021-19_33_45_23.png" />
+    <None Include="wwwroot\Uploads\d07daa09-dd99-449d-b124-721a90b2bcba_03_11_2021-19_33_19_50.png" />
+    <None Include="wwwroot\Uploads\d69093f0-87ea-4d72-89df-9e4d97043f46_03_11_2021-16_56_11_22.png" />
+    <None Include="wwwroot\Uploads\d866c283-0312-4d28-931c-e83819eb623a_03_11_2021-17_01_09_11.png" />
+    <None Include="wwwroot\Uploads\e9874ead-486c-4217-9f2d-23c412f4a9c9_03_11_2021-16_49_12_99.png" />
+    <None Include="wwwroot\Uploads\ec7795ea-9012-4a9d-a9c3-47063a1571a6_03_11_2021-16_54_12_37.png" />
+    <None Include="wwwroot\Uploads\ed1b990e-4c15-47a8-a13f-46faf200b3c8_03_11_2021-17_03_35_49.png" />
+    <None Include="wwwroot\Uploads\f1b473a0-8d96-4173-8bf9-729abbb5a7aa_03_11_2021-17_07_17_34.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

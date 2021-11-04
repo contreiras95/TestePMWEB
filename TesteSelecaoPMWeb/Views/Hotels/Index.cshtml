@@ -1,0 +1,56 @@
+﻿@model Domain.Entities.Hotel
+@{
+    ViewData["Title"] = "Listagem Hoteis";
+}
+
+
+
+<h1 class="mb-4">Lista de Hoteis</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Save">Create New</a>
+</p>
+<table class="table" ng-controller="HotelIndex">
+    <thead>
+        <tr>
+            <th>CNPJ
+</th>
+<th>Nome
+</th>
+<th>
+    Descrição
+</th>
+<th>
+    Endereço
+</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+
+    <tr ng-repeat="hotel in Hoteis">
+        <td>{{hotel.cnpj}}
+</td>
+<td>{{hotel.nome}}
+</td>
+<td>{{hotel.descricao}}
+</td>
+<td>{{hotel.endereco}}
+</td>
+<td>
+    <a style="cursor: pointer" href="~/Hotels/Details/{{hotel.id}}"><i class="fas fa-info-circle "></i></a>
+    <a class="text-warning" href="~/Hotels/Save/{{hotel.id}}"><i class="fas fa-edit ml-2"></i></a>
+
+    <a style="cursor: pointer" class="text-danger" ng-click="Delete(hotel)"><i class="fas fa-trash ml-2"></i></a>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+<script src="~/ControllersJS/BaseController.js"></script>
+<script src="~/ControllersJS/Hotel.js"></script>
+
+

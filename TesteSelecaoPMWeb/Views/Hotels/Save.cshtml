@@ -1,0 +1,92 @@
+﻿@model Domain.Entities.Hotel
+
+@{
+    ViewData["Title"] = "Edição Hotel";
+}
+
+<style>
+    .BuscarCNPJ {
+        float: right;
+        text-decoration: underline !important;
+        color: cornflowerblue !important;
+        cursor: pointer;
+    }
+</style>
+<link href="~/css/jquery-file-upload.css" rel="stylesheet" />
+<h5 id="TituloPagina" class="mb-4">Adicionar</h5>
+<div id="HotelDetalhe" ng-controller="HotelDetalhe">
+    <h3>Hotel {{Hotel.nome}}</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" id="Formulario">
+
+                <div class="form-group" id="CampoCNPJ">
+                    <label asp-for="CNPJ" class="control-label"></label>
+                    <a ng-click="ConsultarCNPJ()" class="BuscarCNPJ"><small>Buscar CNPJ</small></a>
+                    <input asp-for="CNPJ" ng-model="cnpj" ui-br-cnpj-mask id="InputCNPJ" class="form-control" />
+
+                    <span asp-validation-for="CNPJ" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group" id="CampoNome">
+                    <label asp-for="Nome" class="control-label">Nome do Hotel</label>
+                    <input asp-for="Nome" ng-model="Hotel.nome" maxlength="100" id="InputNome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" id="CampoEndereco">
+                    <label asp-for="Endereco" class="control-label"></label>
+                    <input asp-for="Endereco" ng-model="Hotel.endereco" maxlength="100" id="InputEndereco" class="form-control" />
+                    <span asp-validation-for="Endereco" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="CampoDescricao">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <input asp-for="Descricao" ng-model="Hotel.descricao" maxlength="200" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group" id="CampoDescricao">
+                    <label asp-for="Endereco" class="control-label">Fotos</label>
+                    <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="FileUploadFoto" multiple>
+                        <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Selecione um arquivo...</label>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="foto in Hotel.fotos">
+                            <td><a target="_blank" href="~/Uploads/{{foto.arquivo}}">{{foto.nome}}</a></td>
+                            <td> <a style="cursor: pointer" class="text-danger" ng-click="DeleteFotoHotel(foto)"><i class="fas fa-close ml-2"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                   
+                    <div class="form-group" style="margin-top: 40px;">
+                        <a style="cursor: pointer; color:white" ng-click="Save()" class="btn btn-primary">Salvar</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar para listagem</a>
+</div>
+<script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.js" integrity="sha256-tYLuvehjddL4JcVWw1wRMB0oPSz7fKEpdZrIWf3rWNA=" crossorigin="anonymous"></script>
+<script src="~/js/jquery.fileupload.js"></script>
+
+<script src="~/ControllersJS/BaseController.js"></script>
+<script src="~/ControllersJS/Hotel.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "RE+uflybdEczDU1/nlg9qMi8LyowpEwgUB6T0GnunSRb2gy9CKybr1+UzEvKnUl7uUfjQUFL9piyKqIFc02SKA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\marci\\source\\repos\\TesteSelecaoPMWeb\\Service\\Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\marci\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\fluentvalidation\\10.3.4\\fluentvalidation.10.3.4.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\morelinq\\3.3.2\\morelinq.3.3.2.nupkg.sha512",
+    "C:\\Users\\marci\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,246 @@
+﻿@model Domain.Entities.Hotel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="HotelDetalhe" ng-controller="HotelDetalhe">
+
+    <a class="btn btn-primary mb-3 " style="color: white;cursor:pointer" ng-click="AbrirModalQuarto()">Adicionar Quarto</a>
+    <a class=" btn btn-warning mb-3 ml-2" style="color:white" href="../Save/{{Hotel.id}}">Editar</a>
+
+    <a class="float-right mt-2" asp-action="Index">Voltar para listagem</a>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            CNPJ:
+        </dt>
+        <dd class="col-sm-10">
+            {{Hotel.cnpj}}
+        </dd>
+        <dt class="col-sm-2">
+            Nome:
+        </dt>
+        <dd class="col-sm-10">
+            {{Hotel.nome}}
+        </dd>
+        <dt class="col-sm-2">
+            Endereço
+        </dt>
+        <dd class="col-sm-10">
+            {{Hotel.endereco}}
+        </dd>
+        <dt class="col-sm-2">
+            Descrição:
+        </dt>
+        <dd class="col-sm-10">
+            {{Hotel.descricao}}
+        </dd>
+
+    </dl>
+
+    <h4 class="mt-4 mb-2">Fotos do Hotel</h4>
+
+    <a ng-repeat="foto in Hotel.fotos" target="_blank" class="btn-dark btn mr-2" href="~/Uploads/{{foto.arquivo}}">{{foto.nome}}</a>
+
+
+
+    <h4 class="mt-5">Quartos</h4>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ocupantes</th>
+                <th>Adultos</th>
+                <th>Crianças</th>
+                <th>Preço</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="quarto in Hotel.quartos">
+                <td>{{quarto.nome}}</td>
+                <td>{{quarto.numeroOcupantes}}</td>
+                <td>{{quarto.numeroAdultos}}</td>
+                <td>{{quarto.numeroCriancas}}</td>
+                <td>R$ {{quarto.preco}}</td>
+                <td>
+                    <a style="cursor: pointer" ng-click="AbrirModalInfo(quarto)"><i class="fas fa-info-circle "></i></a>
+                    <a style="cursor: pointer" ng-click="EditarQuarto(quarto)" class="text-warning"><i class="fas fa-edit ml-2"></i></a>
+
+                    <a style="cursor: pointer" class="text-danger" ng-click="DeleteQuarto(quarto)"><i class="fas fa-trash ml-2"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="AdicionarQuartoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloModal">Adicionar Quarto</h5>
+                    <a style="cursor: pointer;" ng-click="FecharModaQuarto()"><i class="fas fa-close"></i></a>
+                </div>
+                <div class="modal-body">
+                    <div class="row" id="Formulario">
+                        <div class=" col-6 mb-3" id="CampoNome">
+                            <label class="control-label">Nome</label>
+                            <input type="text" ng-model="QuartoAtivo.nome" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" id="CampoNumeroOcupantes">
+                            <label class="control-label">Número Ocupantes</label>
+                            <input type="text" ui-number-mask="0" ng-model="QuartoAtivo.numeroOcupantes" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" id="CampoNumeroAdultos">
+                            <label class="control-label">Número Adultos</label>
+                            <input type="text" ui-number-mask="0" ng-model="QuartoAtivo.numeroAdultos" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" id="CampoNumeroCriancas">
+                            <label class="control-label">Número Crianças</label>
+                            <input type="text" ui-number-mask="0" ng-model="QuartoAtivo.numeroCriancas" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+
+                        <div class=" col-6 " id="CampoPreco">
+                            <label class="control-label">Preço</label>
+                            <input type="text" id="money" ng-model="QuartoAtivo.preco" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-12  mt-3">
+                            <div class="form-group" id="CampoDescricao">
+                                <h4>Fotos</h4>
+                                <div class="custom-file">
+                                    <input type="file" name="file" class="custom-file-input" id="FileUploadFotoQuarto" multiple>
+                                    <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Selecione um arquivo...</label>
+                                </div>
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="foto in QuartoAtivo.fotos">
+                                        <td><a target="_blank" href="~/Uploads/{{foto.arquivo}}">{{foto.nome}}</a></td>
+                                        <td> <a style="cursor: pointer" class="text-danger" ng-click="DeleteFoto(foto)"><i class="fas fa-close ml-2"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" ng-click="FecharModaQuarto()">Fechar</button>
+                    <button type="button" class="btn btn-primary" ng-click="SaveQuarto()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="InfoQuartoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloModal">Quarto</h5>
+                    <a style="cursor: pointer;" ng-click="FecharModalInfo()"><i class="fas fa-close"></i></a>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row" id="Formulario">
+                        <div class=" col-6 mb-3" >
+                            <label class="control-label">Nome</label>
+                            <input readonly="readonly" type="text" ng-model="QuartoAtivo.nome" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" >
+                            <label class="control-label">Número Ocupantes</label>
+                            <input readonly="readonly" type="text" ng-model="QuartoAtivo.numeroOcupantes" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" >
+                            <label class="control-label">Número Adultos</label>
+                            <input type="text" readonly="readonly" ng-model="QuartoAtivo.numeroAdultos" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-6 mb-3" >
+                            <label class="control-label">Número Crianças</label>
+                            <input type="text" readonly="readonly" ng-model="QuartoAtivo.numeroCriancas" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+
+                        <div class=" col-6 " >
+                            <label class="control-label">Preço</label>
+                            <input type="text" readonly="readonly" ng-model="QuartoAtivo.preco" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class=" col-12  mt-3">
+                            <div class="form-group" id="CampoDescricao">
+                                <h5>Fotos</h5>
+
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="foto in QuartoAtivo.fotos">
+                                        <td>{{foto.id}}</td>
+                                        <td><a target="_blank" href="~/Uploads/{{foto.arquivo}}">{{foto.nome}}</a></td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" ng-click="FecharModalInfo()">Fechar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#money").maskMoney({
+            prefix: "R$ ",
+            decimal: ",",
+            thousands: "."
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.js" integrity="sha256-tYLuvehjddL4JcVWw1wRMB0oPSz7fKEpdZrIWf3rWNA=" crossorigin="anonymous"></script>
+<script src="~/js/jquery.fileupload.js"></script>
+
+<script src="~/ControllersJS/BaseController.js"></script>
+<script src="~/ControllersJS/Hotel.js"></script>
