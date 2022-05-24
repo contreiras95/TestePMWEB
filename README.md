@@ -1,2 +1,3 @@
-# TestePMWEB
-Teste de para concorrer a vaga de programador.
+# Teste de conhecimentos .NET
+
+Foi utilizado .NET Core com DDD
